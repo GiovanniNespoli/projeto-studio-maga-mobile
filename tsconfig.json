@@ -17,6 +17,7 @@
       "@styles/*": ["./src/styles/*"],
       "@interfaces/*": ["./src/interfaces/*"]
     },
+
     "types": [
 
     ]
