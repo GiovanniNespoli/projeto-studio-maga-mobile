@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
-import Routes from '@routes/index.routes';
+import React from 'react';
 import { Image } from 'react-native';
+import Routes from '@routes/index.routes';
+import { useFonts, Montserrat_700Bold } from '@expo-google-fonts/montserrat';
+import { Outfit_500Medium, Outfit_700Bold } from '@expo-google-fonts/outfit';
 
 export default function App() {
-  const [isLoading, setIsLoading] = useState(false);
+  let [fontsLoaded] = useFonts({
+    Montserrat_700Bold,
+    Outfit_500Medium,
+    Outfit_700Bold,
+  })
 
-  if (isLoading) {
+  if (!fontsLoaded) {
+    return <Image source={require("@assets/logo.png")} />
+  } else {
     return (
-      <Image source={require("./src/assets/icone.png")} />
-    )
-      
+      <Routes />
+    );
   }
-  return (
-    <Routes />
-  );
 }
-
-
