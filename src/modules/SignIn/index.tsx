@@ -9,6 +9,7 @@ import { Button } from '@components/Button';
 import { Input } from '@components/Input';
 import { RFValue } from 'react-native-responsive-fontsize';
 import theme from '@styles/theme';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export function SignIn() {
     const { navigate } = useNavigation<StackNavigationProp<AuthParamList, auth>>();
@@ -18,36 +19,38 @@ export function SignIn() {
         <Container>
             <Content>
                 <SignInContainer>
-                    <Header
-                        subTitle='Preencha os campos para entrar'
-                        title='Seja Bem-vindo(a)' />
-                    <SignInForm ref={formRef} onSubmit={() => { }}>
-                        <Input
-                            name='email'
-                            placeholder='Email'
-                        />
-                        <Input
-                            name='password'
-                            placeholder='Senha'
-                            secureTextEntry={true}
-                        />
-                        <Button
-                            label='Login'
-                            fontSize={22}
-                        />
-                    </SignInForm>
-                    <NavigationContent>
-                        <NavigationText>Não possui uma conta ?</NavigationText>
-                        <Button
-                            style={{
-                                width: "70%",
-                                height: RFValue(39),
-                                backgroundColor: theme.colors.tertiary,
-                            }}
-                            label='Cadastre-se'
-                            fontSize={16}
-                        />
-                    </NavigationContent>
+                    <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
+                        <Header
+                            subTitle='Preencha os campos para entrar'
+                            title='Seja Bem-vindo(a)' />
+                        <SignInForm ref={formRef} onSubmit={() => { }}>
+                            <Input
+                                name='email'
+                                placeholder='Email'
+                            />
+                            <Input
+                                name='password'
+                                placeholder='Senha'
+                                secureTextEntry={true}
+                            />
+                            <Button
+                                label='Login'
+                                fontSize={22}
+                            />
+                        </SignInForm>
+                        <NavigationContent>
+                            <NavigationText>Não possui uma conta ?</NavigationText>
+                            <Button
+                                style={{
+                                    width: "70%",
+                                    height: RFValue(39),
+                                    backgroundColor: theme.colors.tertiary,
+                                }}
+                                label='Cadastre-se'
+                                fontSize={16}
+                            />
+                        </NavigationContent>
+                    </KeyboardAwareScrollView>
                 </SignInContainer>
             </Content>
         </Container>
