@@ -21,10 +21,14 @@ module.exports = function (api) {
           }
         }
       ],
-      'react-native-reanimated/plugin',
       ["module:react-native-dotenv", {
         "moduleName": "@env"
-      }]
+      }],
+      [
+        'react-native-reanimated/plugin', {
+          relativeSourceLocation: true,
+        },
+      ]
     ],
   };
 };
