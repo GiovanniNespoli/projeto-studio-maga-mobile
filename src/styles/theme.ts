@@ -4,6 +4,7 @@ export default {
         secondary: '#DAA296',
         tertiary: '#AB7C63',
         input: "#F3F3F3",
+        text: "#555252"
     },
     text: {
         montserrat: {
