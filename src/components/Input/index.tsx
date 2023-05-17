@@ -1,6 +1,5 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { TextInputProps } from "react-native/types";
-import { Text } from "react-native";
 import { Container } from "./styles";
 
 interface IInputsProps extends TextInputProps {
