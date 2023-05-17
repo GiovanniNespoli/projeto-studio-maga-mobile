@@ -9,6 +9,7 @@ export const Container = styled.TouchableOpacity`
     border-radius: ${RFValue(15)}px;
     align-items: center;
     justify-content: center;
+    margin-top: ${RFValue(25)}px;
 `;
 
 interface IButtonLabelProps {
