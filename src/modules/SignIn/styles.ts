@@ -22,16 +22,3 @@ export const SignInContainer = styled.View`
     align-items: center;
     justify-content: center;
 `;
-export const NavigationText = styled.Text`
-    font-size: ${RFValue(12)}px;
-    font-family: ${theme.text.outfit.medium};
-    color: ${theme.colors.text};
-    margin-top: ${RFValue(20)}px;       
-`;
-
-export const NavigationContent = styled.View`
-    width: 100%;
-    height: 13%;
-    align-items: center;
-    justify-content: space-between; 
-`;
