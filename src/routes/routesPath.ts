@@ -2,7 +2,8 @@ import { StackScreenProps } from "@react-navigation/stack";
 
 export enum auth {
     signin = 'signin',
-    signup = 'signup'
+    signup = 'signup',
+    tab = 'tab'
 }
 
 export enum stack {
