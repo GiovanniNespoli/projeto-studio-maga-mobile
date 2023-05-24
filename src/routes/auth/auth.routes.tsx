@@ -5,6 +5,7 @@ import { auth } from '../routesPath';
 import { SignUp } from '@modules/SignUp';
 import { BottomTab } from '@src/components/BottomTab';
 import { HomeTab } from '@modules/HomeTab';
+import { NewAppointment } from '@modules/HomeTab/Appointments/NewAppointment';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -12,16 +13,16 @@ export default function AuthRoutes() {
     return (
         <Navigator screenOptions={{ headerShown: false }}>
             <Screen
+                component={NewAppointment}
+                name={auth.newappoitment}
+            />
+             <Screen
                 component={HomeTab}
                 name={auth.hometab}
             />
             <Screen
                 component={SignIn}
                 name={auth.signin}
-            />
-            <Screen
-                component={SignUp}
-                name={auth.signup}
             />
         </Navigator>
     )

@@ -36,6 +36,7 @@ export function SignIn() {
                             <Button
                                 label='Login'
                                 fontSize={22}
+                                onPress={() => navigate('hometab')}
                             />
                         </SignInForm>
                         <NavigationContent>

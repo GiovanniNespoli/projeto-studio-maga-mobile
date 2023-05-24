@@ -9,7 +9,7 @@ export function Home() {
         <Container contentContainerStyle={{
             justifyContent: 'center',
             alignItems: 'center',
-            height: Dimensions.get("screen").height + 500
+            height: Dimensions.get("screen").height + 430
         }} >
             <Banner>
                 <BannerImage source={require("@assets/banner.png")} />

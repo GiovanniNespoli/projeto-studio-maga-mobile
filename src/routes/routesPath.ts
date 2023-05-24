@@ -6,6 +6,7 @@ export enum auth {
     hometab = 'hometab',
     home = 'home',
     appointemnts = 'appointemnts',
+    newappoitment = 'newappoitment',
     tab = 'tab'
 }
 
@@ -24,6 +25,7 @@ export type AuthParamList = {
     appointemnts: undefined,
     home: undefined,
     tab: undefined,
+    newappoitment: undefined,
 };
 
 export type AuthScreen<T extends keyof AuthParamList> = StackScreenProps<AuthParamList, T>;
