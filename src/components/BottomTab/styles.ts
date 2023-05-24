@@ -5,7 +5,12 @@ import styled from "styled-components/native";
 export const Container = styled.TouchableOpacity`
   justify-content: center;
   align-items:center;
-  flex: 0.65;
+  flex: 1;
+  height: 60px;
+`;
+
+export const Content = styled.View`
+
 `;
 
 export const FocusContent = styled.View`

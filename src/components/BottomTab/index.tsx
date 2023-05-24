@@ -5,7 +5,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { AuthParamList, auth } from '@routes/routesPath';
 import * as Animatable from "react-native-animatable";
 import { Icon } from "react-native-elements";
-import { Circle, Container, FocusContent } from "./styles";
+import { Circle, Container, FocusContent, Content } from "./styles";
 import { useNavigation } from "@react-navigation/native";
 
 interface ITabObject {
@@ -39,7 +39,7 @@ export const BottomTab: React.FC<IBottomTabProps> = ({ tabArr, ...rest }) => {
           onPress={onPress}
           activeOpacity={1}
         >
-          <View>
+          <Content>
             <Animatable.View
               ref={viewRef}
               style={[
@@ -52,7 +52,7 @@ export const BottomTab: React.FC<IBottomTabProps> = ({ tabArr, ...rest }) => {
             >
               <Icon name={item.icon} type="octicon" color={focused ? '#FFFFFF' :'#6e6e6e'} />
             </FocusContent>
-          </View>
+          </Content>
         </Container>
       </>
     );
