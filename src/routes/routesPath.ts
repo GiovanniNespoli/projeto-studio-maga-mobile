@@ -1,8 +1,10 @@
 import { StackScreenProps } from "@react-navigation/stack";
 
+
 export enum auth {
     signin = 'signin',
-    signup = 'signup'
+    signup = 'signup',
+    horarios = "horarios"
 }
 
 export enum stack {
@@ -16,6 +18,7 @@ export type StackParamList = {
 export type AuthParamList = {
     signin: undefined,
     signup: undefined,
+    horarios: undefined,
 };
 
 export type AuthScreen<T extends keyof AuthParamList> = StackScreenProps<AuthParamList, T>;
