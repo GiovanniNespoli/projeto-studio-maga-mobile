@@ -22,5 +22,9 @@ export default {
             secondary: "#979797",
             tertiary: '#FFFFFF',
         }
+    },
+    compcolors: {
+            pink: "#daa296",
+            white: "#FFFF"
     }
 }

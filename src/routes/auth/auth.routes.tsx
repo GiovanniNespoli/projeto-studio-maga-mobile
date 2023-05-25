@@ -5,6 +5,8 @@ import { auth } from '../routesPath';
 import { SignUp } from '@modules/SignUp';
 import { BottomTab } from '@src/components/BottomTab';
 import { HomeTab } from '@modules/HomeTab';
+import { SuccessAppointment } from '@modules/SuccessAppointment';
+import { SuccessSignUp } from  '@modules/SuccessSignUp';
 import { NewAppointment } from '@modules/HomeTab/Appointments/NewAppointment';
 
 const { Navigator, Screen } = createStackNavigator();
@@ -12,6 +14,16 @@ const { Navigator, Screen } = createStackNavigator();
 export default function AuthRoutes() {
     return (
         <Navigator screenOptions={{ headerShown: false }}>
+
+            <Screen
+                component={SuccessSignUp}
+                name={auth.successsignup}
+            />
+
+            <Screen
+                component={SuccessAppointment}
+                name={auth.successappointment}
+            />
             <Screen
                 component={NewAppointment}
                 name={auth.newappoitment}
