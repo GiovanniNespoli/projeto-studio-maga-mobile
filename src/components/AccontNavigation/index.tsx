@@ -8,26 +8,35 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { AuthParamList, auth } from "@routes/routesPath";
 
 interface IAccontNavigationProps {
-    navigation: string;
+  buttonText: string;
+  subTitleText: string;
+  navigation: string;
 }
 
-export const AccontNavigation: React.FC<IAccontNavigationProps> = ({ navigation }) => {
-    const { navigate } = useNavigation<StackNavigationProp<AuthParamList, auth>>();
+export const AccontNavigation: React.FC<IAccontNavigationProps> = ({
+  navigation,
+  buttonText,
+  subTitleText,
+}) => {
+  const { navigate } =
+    useNavigation<StackNavigationProp<AuthParamList, auth>>();
 
-    return (
-        <NavigationContent>
-            <NavigationText>Não possui uma conta ?</NavigationText>
-            <Button
-                style={{
-                    width: "70%",
-                    height: RFValue(39),
-                    backgroundColor: theme.colors.tertiary,
-                }}
-                label='Cadastre-se'
-                fontSize={16}
-                //@ts-ignore
-                onPress={() => { navigate(navigation) }}
-            />
-        </NavigationContent>
-    )
-}
+  return (
+    <NavigationContent>
+      <NavigationText>{subTitleText}</NavigationText>
+      <Button
+        style={{
+          width: "70%",
+          height: RFValue(39),
+          backgroundColor: theme.colors.tertiary,
+        }}
+        label={buttonText}
+        fontSize={16}
+        //@ts-ignore
+        onPress={() => {
+          navigate(navigation);
+        }}
+      />
+    </NavigationContent>
+  );
+};

@@ -12,18 +12,11 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Content } from "@components/Content";
 
 export function SignUp() {
-  const { navigate } =
-    useNavigation<StackNavigationProp<AuthParamList, auth>>();
-
+  
   return (
-    <KeyboardAwareScrollView
-      contentContainerStyle={{
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <Container>
-        <Content>
+    <Container>
+      <Content marginTopNumber={20}>
+        <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
           <Header
             title="Seja Bem-vindo(a)"
             subTitle="Preencha os campos para cadastrar-se"
@@ -35,9 +28,13 @@ export function SignUp() {
             <Input placeholder="Telefone" name="Telefone" />
             <Button fontSize={20} label="Cadastre-se" />
           </SignUpForm>
-          <AccontNavigation navigation="singin" />
-        </Content>
-      </Container>
-    </KeyboardAwareScrollView>
+          <AccontNavigation
+            buttonText="Faça seu Login"
+            subTitleText="Já possui uma conta?"
+            navigation="signin"
+          />
+        </KeyboardAwareScrollView>
+      </Content>
+    </Container>
   );
 }

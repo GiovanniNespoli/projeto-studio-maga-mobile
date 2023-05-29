@@ -1,7 +1,6 @@
 import theme from "@styles/theme";
 import styled from "styled-components/native"
 import { Form } from '@unform/mobile';
-import { RFValue } from "react-native-responsive-fontsize";
 
 export const Container = styled.View`
     flex: 1;

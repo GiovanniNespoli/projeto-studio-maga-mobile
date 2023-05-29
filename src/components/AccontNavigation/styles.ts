@@ -11,7 +11,7 @@ export const NavigationText = styled.Text`
 
 export const NavigationContent = styled.View`
     width: 100%;
-    height: 13%;
+    height: ${RFValue(100)}px;
     align-items: center;
     justify-content: space-between; 
 `;
