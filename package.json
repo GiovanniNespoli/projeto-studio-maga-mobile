@@ -1,57 +1,52 @@
 {
-  "name": "projeto-studio-maga-backend",
+  "name": "app-studio-maga",
   "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/GiovanniNespoli/projeto-studio-maga-backend.git",
-  "author": "GabrielaGonzaga <gabrielamgonzaga1@gmail.com>",
-  "license": "MIT",
+  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
-    "server": "node dist/shared/infra/http/server.js",
-    "dev:server": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
-    "typeorm": "ts-node-dev  -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
-    "test": "jest"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "cross-env NODE_ENV=development eslint --cache"
-    ],
-    "*.json,.{eslintrc,prettierrc}": [
-      "prettier --ignore-path .eslintignore --parser json --write"
-    ],
-    "*.{css,scss}": [
-      "prettier --ignore-path .eslintignore --single-quote --write"
-    ],
-    "*.{html,md,yml}": [
-      "prettier --ignore-path .eslintignore --single-quote --write"
-    ]
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
   },
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "celebrate": "^15.0.1",
-    "class-transformer": "0.4.0",
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "express-async-errors": "^3.1.1",
-    "pg": "^8.11.0",
-    "rate-limiter-flexible": "^2.4.1",
-    "reflect-metadata": "^0.1.13",
-    "tsyringe": "4.6.0",
-    "typeorm": "0.2.37",
-    "uuid": "^9.0.0"
+    "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
+    "@expo-google-fonts/montserrat": "^0.2.3",
+    "@expo-google-fonts/outfit": "^0.2.3",
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-brands-svg-icons": "^6.4.0",
+    "@fortawesome/free-regular-svg-icons": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@fortawesome/react-native-fontawesome": "^0.3.0",
+    "@primer/react": "^35.25.1",
+    "@react-native-masked-view/masked-view": "0.2.8",
+    "@react-navigation/bottom-tabs": "^6.5.7",
+    "@react-navigation/native": "^6.1.6",
+    "@react-navigation/stack": "^6.3.16",
+    "@types/react": "~18.0.27",
+    "@unform/core": "^2.1.6",
+    "@unform/mobile": "^2.1.6",
+    "expo": "~48.0.15",
+    "expo-status-bar": "~1.4.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-native": "0.71.7",
+    "react-native-animatable": "^1.3.3",
+    "react-native-dotenv": "^3.4.8",
+    "react-native-drop-shadow": "^0.0.6",
+    "react-native-elements": "^3.4.3",
+    "react-native-gesture-handler": "~2.9.0",
+    "react-native-keyboard-aware-scroll-view": "^0.9.5",
+    "react-native-responsive-fontsize": "^0.5.1",
+    "react-native-safe-area-context": "4.5.0",
+    "react-native-screens": "~3.20.0",
+    "react-native-shadow-2": "^7.0.8",
+    "react-native-svg": "^13.4.0",
+    "styled-components": "^5.3.10",
+    "typescript": "^4.9.4"
   },
   "devDependencies": {
-    "@types/express": "^4.17.17",
-    "@typescript-eslint/eslint-plugin": "^5.59.7",
-    "@typescript-eslint/parser": "^5.59.7",
-    "eslint": "^8.41.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-import-resolver-typescript": "^3.5.5",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.8",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "4.4.3"
-  }
+    "@babel/core": "^7.20.0"
+  },
+  "private": true
 }
