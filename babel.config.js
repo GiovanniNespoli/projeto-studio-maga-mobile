@@ -3,6 +3,7 @@ module.exports = function (api) {
   return {
     presets: ['babel-preset-expo'],
     plugins: [
+      // 'react-native-reanimated/plugin',
       [
         'module-resolver',
 
@@ -10,25 +11,23 @@ module.exports = function (api) {
           root: ['./src'],
           extensions: ['.ts', '.js', '.tsx', '.json'],
           alias: {
-            '@components': './src/components',
             '@assets': './src/assets',
+            '@components': './src/components',
+            '@config': './src/config',
+            '@constants': './src/constants',
             '@hooks': './src/hooks',
+            '@interfaces': './src/interfaces',
             '@modules': './src/modules',
             '@routes': './src/routes',
             '@services': './src/services',
             '@styles': './src/styles',
-            '@interfaces': './src/interfaces',
+            '@utils': './src/utils',
           }
         }
       ],
       ["module:react-native-dotenv", {
         "moduleName": "@env"
       }],
-      [
-        'react-native-reanimated/plugin', {
-          relativeSourceLocation: true,
-        },
-      ]
     ],
   };
 };

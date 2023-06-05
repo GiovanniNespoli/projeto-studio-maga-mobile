@@ -6,6 +6,9 @@ export default {
         input: "#F3F3F3",
         text: "#555252"
     },
+    banner:{
+        background: '#8A96BC'
+    },
     text: {
         montserrat: {
             bold: "Montserrat_700Bold",
@@ -17,6 +20,7 @@ export default {
         color: {
             primary: "#666666",
             secondary: "#979797",
+            tertiary: '#FFFFFF',
         }
     }
 }
