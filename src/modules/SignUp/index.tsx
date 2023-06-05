@@ -8,11 +8,11 @@ import { Input } from "@components/Input";
 import { AccontNavigation } from "@components/AccontNavigation";
 import { Button } from "@components/Button";
 import { Container, SignUpForm } from "./styles";
-import { LinearGradient } from "expo-linear-gradient";
 import { Content } from "@components/Content";
+import { MaskedInput } from "@components/MaskedInput";
 
 export function SignUp() {
-  
+
   return (
     <Container>
       <Content marginTopNumber={20}>
@@ -23,9 +23,9 @@ export function SignUp() {
           />
           <SignUpForm>
             <Input placeholder="Nome completo" name="Nome completo" />
-            <Input placeholder="Email" name="Email" />
-            <Input placeholder="Senha" name="Senha" />
-            <Input placeholder="Telefone" name="Telefone" />
+            <Input placeholder="Email" keyboardType="email-address" name="Email" />
+            <Input placeholder="Senha" secureTextEntry={true} name="Senha" />
+            <MaskedInput placeholder="Telefone" keyboardType="phone-pad" name="Telefone" />
             <Button fontSize={20} label="Cadastre-se" />
           </SignUpForm>
           <AccontNavigation
