@@ -6,12 +6,12 @@ import { AuthParamList, auth } from "@routes/routesPath";
 import {
   Container,
   Header,
-  BackArrow,
   HeaderTitle,
+  IconButton,
+  SelectContent,
   Title,
-  ServiceSelect,
 } from "./styles";
-import { DatePicker } from "@components/DatePicker";
+import { Content } from "@components/Content";
 
 export function NewAppointment() {
   const { navigate, goBack } =
@@ -24,23 +24,29 @@ export function NewAppointment() {
   ]);
   return (
     <Container>
-      <Header>
-        <BackArrow onPress={() => goBack()}>
-          <Icon name={"arrow-left"} type="octicon" color={"#6e6e6e"} />
-        </BackArrow>
-        <HeaderTitle>Agendar Horário</HeaderTitle>
-      </Header>
-      <Title>Serviço Selecionado : </Title>
-      <ServiceSelect
-        open={open}
-        value={value}
-        items={items}
-        setOpen={setOpen}
-        setValue={setValue}
-        setItems={setItems}
-      />
-      <Title>Selecione o Dia </Title>
-      <DatePicker />
+      <Content marginTopNumber={0}>
+        <Header>
+          <IconButton onPress={() => {}}>
+            <Icon
+              name={"arrow-left"}
+              type="octicon"
+              color={"#6e6e6e"}
+              size={30}
+            />
+          </IconButton>
+          <HeaderTitle>Agenda de horários</HeaderTitle>
+          <IconButton disabled={true}>
+          </IconButton>
+        </Header>
+
+        <SelectContent>
+          <Title>Serviço Selecionado :</Title>
+          {/* <SelectService/> */}
+        </SelectContent>
+        <SelectContent>
+          <Title></Title>
+        </SelectContent>
+      </Content>
     </Container>
   );
 }
