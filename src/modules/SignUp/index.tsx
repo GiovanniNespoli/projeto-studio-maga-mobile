@@ -40,7 +40,7 @@ export function SignUp() {
               fontSize={20}
               label="Cadastre-se"
               onPress={() => {
-                navigate("successsignup")
+                navigate("codevalidation")
               }}
             />
           </SignUpForm>
