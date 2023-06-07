@@ -5,13 +5,13 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { AuthParamList, auth } from "@routes/routesPath";
 import {
   Container,
-  Header,
-  BackArrow,
-  HeaderTitle,
-  Title,
-  ServiceSelect,
+  // Header,
+  // BackArrow,
+  // HeaderTitle,
+  // Title,
+  // ServiceSelect,
 } from "./styles";
-import { DatePicker } from "@components/DatePicker";
+// import { DatePicker } from "@components/DatePicker";
 
 export function NewAppointment() {
   const { navigate, goBack } =
@@ -24,7 +24,7 @@ export function NewAppointment() {
   ]);
   return (
     <Container>
-      <Header>
+      {/* <Header>
         <BackArrow onPress={() => goBack()}>
           <Icon name={"arrow-left"} type="octicon" color={"#6e6e6e"} />
         </BackArrow>
@@ -40,7 +40,7 @@ export function NewAppointment() {
         setItems={setItems}
       />
       <Title>Selecione o Dia </Title>
-      <DatePicker />
+      <DatePicker /> */}
     </Container>
   );
 }
