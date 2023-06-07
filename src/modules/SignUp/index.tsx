@@ -12,6 +12,8 @@ import { Content } from "@components/Content";
 import { MaskedInput } from "@components/MaskedInput";
 
 export function SignUp() {
+  const { navigate } =
+    useNavigation<StackNavigationProp<AuthParamList, auth>>();
 
   return (
     <Container>
@@ -23,10 +25,24 @@ export function SignUp() {
           />
           <SignUpForm>
             <Input placeholder="Nome completo" name="Nome completo" />
-            <Input placeholder="Email" keyboardType="email-address" name="Email" />
+            <Input
+              placeholder="Email"
+              keyboardType="email-address"
+              name="Email"
+            />
             <Input placeholder="Senha" secureTextEntry={true} name="Senha" />
-            <MaskedInput placeholder="Telefone" keyboardType="phone-pad" name="Telefone" />
-            <Button fontSize={20} label="Cadastre-se" />
+            <MaskedInput
+              placeholder="Telefone"
+              keyboardType="phone-pad"
+              name="Telefone"
+            />
+            <Button
+              fontSize={20}
+              label="Cadastre-se"
+              onPress={() => {
+                navigate("successsignup")
+              }}
+            />
           </SignUpForm>
           <AccontNavigation
             buttonText="Faça seu Login"

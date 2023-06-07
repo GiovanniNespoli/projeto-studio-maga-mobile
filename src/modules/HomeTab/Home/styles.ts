@@ -4,15 +4,14 @@ import styled from "styled-components/native";
 
 export const Container = styled.ScrollView`
   flex-direction: column;
-  padding: ${RFValue(20)}px;
+  padding: ${RFValue(10)}px;
 `;
 
 export const Title = styled.Text`
     font-size: ${RFValue(22)}px;
     font-family: ${theme.text.outfit.medium};
     color: ${theme.colors.text}; 
-    align-self: flex-start;  
-    text-align: flex-start;
+    align-self: flex-start; 
 `;
 
 export const Banner = styled.View`

@@ -3,18 +3,18 @@ import { TextInputProps } from "react-native/types";
 import { Container } from "./styles";
 
 interface IInputsProps extends TextInputProps {
-    name: string
+  name: string;
 }
 
 export const MaskedInput: React.FC<IInputsProps> = ({ name, ...rest }) => {
-    const inputElementRef = useRef<any>(null);
+  const inputElementRef = useRef<any>(null);
 
-    return (
-        <Container
-            ref={inputElementRef}
-            {...rest}
-            mask="(99) 99999-9999"
-        >
-        </Container>
-    )
-}
+  return (
+    <Container
+      ref={inputElementRef}
+      {...rest}
+      mask="(99) 99999-9999"
+      onChangeText={() => {}}
+    ></Container>
+  );
+};

@@ -32,8 +32,8 @@ export const AccontNavigation: React.FC<IAccontNavigationProps> = ({
         }}
         label={buttonText}
         fontSize={16}
-        //@ts-ignore
         onPress={() => {
+          //@ts-ignore
           navigate(navigation);
         }}
       />

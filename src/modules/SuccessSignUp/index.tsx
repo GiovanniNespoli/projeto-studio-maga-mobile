@@ -17,7 +17,7 @@ export function SuccessSignUp() {
         <Text1>Conta Criada com sucesso, </Text1>
         <Text2>Vamos começar?</Text2>
 
-        <Button1 onPress={() => navigate("signin")}>
+        <Button1 onPress={() => navigate("hometab")}>
           <ButtonText>Voltar</ButtonText>
         </Button1>
       </View>

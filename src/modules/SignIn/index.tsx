@@ -6,9 +6,14 @@ import { Button } from "@components/Button";
 import { Input } from "@components/Input";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { AccontNavigation } from "@components/AccontNavigation";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { AuthParamList, auth } from "@src/routes/routesPath";
 
 export function SignIn() {
   const formRef = useRef(null);
+  const { navigate } =
+    useNavigation<StackNavigationProp<AuthParamList, auth>>();
 
   return (
     <Container>
@@ -26,7 +31,13 @@ export function SignIn() {
                 placeholder="Senha"
                 secureTextEntry={true}
               />
-              <Button label="Login" fontSize={22} />
+              <Button
+                label="Login"
+                fontSize={22}
+                onPress={() => {
+                  navigate("hometab");
+                }}
+              />
             </SignInForm>
             <AccontNavigation
               buttonText="Cadastre-se"
