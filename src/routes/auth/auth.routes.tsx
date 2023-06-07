@@ -13,8 +13,8 @@ const { Navigator, Screen } = createStackNavigator();
 export default function AuthRoutes() {
   return (
     <Navigator screenOptions={{ headerShown: false }}>
-      <Screen component={NewAppointment} name={auth.newappoitment} />
       <Screen component={SignIn} name={auth.signin} />
+      <Screen component={NewAppointment} name={auth.newappoitment} />
       <Screen component={SignUp} name={auth.signup} />
       <Screen component={SuccessSignUp} name={auth.successsignup} />
       <Screen component={SuccessAppointment} name={auth.successappointment} />

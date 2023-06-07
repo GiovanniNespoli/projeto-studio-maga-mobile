@@ -113,7 +113,7 @@ export function NewAppointment() {
             <Title style={{ marginRight: RFValue(10) }}>Valor Total: </Title>
             <TotalValue>110,90</TotalValue>
           </TotalValueContent>
-          <Button fontSize={18} label="Agendar horário" />
+          <Button onPress={() => {navigate("successappointment")}} fontSize={18} label="Agendar horário" />
         </Grid>
       </Content>
     </Container>
