@@ -24,7 +24,7 @@ interface IConfirmModal {
 export default function ConfirmModal({ value, ...rest }: IConfirmModal) {
   const [modalVisible, setModalVisible] = useState(false);
 
-  const { navigate } = useNavigation<StackNavigationProp<AuthParamList, auth>>();
+  const { navigate, goBack } = useNavigation<StackNavigationProp<AuthParamList, auth>>();
 
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export default function ConfirmModal({ value, ...rest }: IConfirmModal) {
                 <AlertButton onPress={() => {
                   setModalVisible(false)
                 }} alertType={true}><AlertLabel>Não</AlertLabel></AlertButton>
-                <AlertButton onPress={() => { navigate("successappointment") }} alertType={false}><AlertLabel>Sim</AlertLabel></AlertButton>
+                <AlertButton onPress={() => { goBack() }} alertType={false}><AlertLabel>Sim</AlertLabel></AlertButton>
               </AlertButtonContent>
             </ModalArea>
           </ModalContent>

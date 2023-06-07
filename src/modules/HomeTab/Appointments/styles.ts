@@ -54,13 +54,14 @@ export const Name = styled.Text`
 
 export const Containers = styled.View`
   height: ${RFValue(130)}px;
-  width: ${RFValue(330)}px;
+  width: ${RFValue(280)}px;
   background-color: white;
   border-radius: ${RFValue(10)}px;
   shadow-color: black;
   shadow-offset: 0px 0px;
   shadow-opacity: 0.2;
   shadow-radius: 6px;
+  elevation: 5px;
   padding-left: ${RFValue(20)}px;
   justifyContent: center;
   margin-bottom:${RFValue(20)}px;
