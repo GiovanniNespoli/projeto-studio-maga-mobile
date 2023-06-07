@@ -1,35 +1,30 @@
-import { useNavigation } from '@react-navigation/native';
-import * as React from 'react';
+import { useNavigation } from "@react-navigation/native";
+import * as React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { AuthParamList, auth } from '@routes/routesPath';
-import { color } from 'react-native-reanimated';
-import { Button1, ButtonText, Check, Footer, Text1, Text2 } from './styles';
-
-
+import { AuthParamList, auth } from "@routes/routesPath";
+import { color } from "react-native-reanimated";
+import { Button1, ButtonText, Check, Footer, Text1, Text2 } from "./styles";
 
 export function SuccessAppointment() {
+  const { navigate } = useNavigation<StackNavigationProp<AuthParamList>>();
 
-    const { navigate } = useNavigation<StackNavigationProp<AuthParamList>>();
+  return (
+    <>
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <Check source={require("../../assets/check.png")}></Check>
 
-    return (
-        <><View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text1>Seu agendamento foi marcado com sucesso </Text1>
+        <Text2>Você receberá uma mensagem </Text2>
 
-            <Check source={require("../../assets/check.png")}></Check>
+        <Button1 onPress={() => navigate("signin")}>
+          <ButtonText>Voltar</ButtonText>
+        </Button1>
+      </View>
 
-            <Text1>Seu agendamento foi marcado com sucesso </Text1>
-            <Text2>Você receberá uma mensagem </Text2>
-
-            <Button1 onPress={() => navigate('signin')}>
-            <ButtonText>Voltar</ButtonText>
-            </Button1>
-
-
-        </View>
-
-        <View style={{alignItems: 'center', justifyContent: 'center' }}>
-                <Footer source={require("../../assets/logofooter.png")}></Footer>
-        </View></>
-
-    );
-};
+      <View style={{ alignItems: "center", justifyContent: "center" }}>
+        <Footer source={require("../../assets/logofooter.png")}></Footer>
+      </View>
+    </>
+  );
+}
