@@ -1,7 +1,7 @@
 import theme from "@styles/theme";
 import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
-import DropDownPicker from 'react-native-dropdown-picker';
+// import DropDownPicker from 'react-native-dropdown-picker';
 
 export const Container = styled.View`
   justify-content: flex-start;
@@ -44,15 +44,15 @@ export const Title = styled.Text`
     margin-bottom: ${RFValue(15)}px;
 `;
 
-export const ServiceSelect = styled(DropDownPicker)`
-  width: 100%;
-  height: ${RFValue(59)}px;
-  border: 0;
-  background-color:  ${theme.colors.input};  
-  font-family: ${theme.text.outfit.medium};
-  elevation: 4;
-  shadow-offset:{  width: 0,  height: 2,  };
-  shadow-color: #000000;
-  shadow-opacity: 0.19;
-  shadow-radius: 3.2px;
-`;
+// export const ServiceSelect = styled(DropDownPicker)`
+//   width: 100%;
+//   height: ${RFValue(59)}px;
+//   border: 0;
+//   background-color:  ${theme.colors.input};  
+//   font-family: ${theme.text.outfit.medium};
+//   elevation: 4;
+//   shadow-offset:{  width: 0,  height: 2,  };
+//   shadow-color: #000000;
+//   shadow-opacity: 0.19;
+//   shadow-radius: 3.2px;
+// `;

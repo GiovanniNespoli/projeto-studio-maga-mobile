@@ -31,16 +31,16 @@ export function NewAppointment() {
         <HeaderTitle>Agendar Horário</HeaderTitle>
       </Header>
       <Title>Serviço Selecionado : </Title>
-      <ServiceSelect
+      {/* <ServiceSelect
         open={open}
         value={value}
         items={items}
         setOpen={setOpen}
         setValue={setValue}
         setItems={setItems}
-      />
+      /> */}
       <Title>Selecione o Dia </Title>
-      <DatePicker />
+      {/* <DatePicker /> */}
     </Container>
   );
 }

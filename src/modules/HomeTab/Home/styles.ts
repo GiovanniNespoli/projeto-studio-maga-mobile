@@ -12,7 +12,7 @@ export const Title = styled.Text`
     font-family: ${theme.text.outfit.medium};
     color: ${theme.colors.text}; 
     align-self: flex-start;  
-    text-align: flex-start;
+    /* text-align: flex-start; */
 `;
 
 export const Banner = styled.View`
