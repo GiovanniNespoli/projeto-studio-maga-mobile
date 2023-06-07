@@ -1,7 +1,7 @@
 import theme from "@styles/theme";
 import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
-import RNDateTimePicker from '@react-native-community/datetimepicker';
+// import RNDateTimePicker from '@react-native-community/datetimepicker';
 
 export const Container = styled.View`
     width: 100%;
@@ -18,10 +18,10 @@ export const Container = styled.View`
     border-radius: ${RFValue(10)}px;
 `;
 
-export const DatePickerContent = styled(RNDateTimePicker)`
-    font-family: ${theme.text.outfit.medium};
-    /* background-color: red; */
-    width: auto;
-    margin-left: ${RFValue(-20)}px;
-`;
+// export const DatePickerContent = styled(RNDateTimePicker)`
+//     font-family: ${theme.text.outfit.medium};
+//     /* background-color: red; */
+//     width: auto;
+//     margin-left: ${RFValue(-20)}px;
+// `;
 

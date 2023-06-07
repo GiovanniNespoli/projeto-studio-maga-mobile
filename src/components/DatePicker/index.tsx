@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Platform, TouchableOpacityProps } from "react-native";
 import { Container, DatePickerContent } from "./styles";
-import RNDateTimePicker, { DatePickerOptions } from '@react-native-community/datetimepicker';
+// import RNDateTimePicker, { DatePickerOptions } from '@react-native-community/datetimepicker';
 
 interface IDatePickerProps extends DatePickerOptions {
     label: string;

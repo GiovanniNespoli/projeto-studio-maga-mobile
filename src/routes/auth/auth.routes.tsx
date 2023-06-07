@@ -7,13 +7,14 @@ import { BottomTab } from "@src/components/BottomTab";
 import { HomeTab } from "@modules/HomeTab";
 import { SuccessAppointment } from "@modules/SuccessAppointment";
 import { SuccessSignUp } from "@modules/SuccessSignUp";
+import { Configurations } from "@modules/HomeTab/Configurations";
 
 const { Navigator, Screen } = createStackNavigator();
 
 export default function AuthRoutes() {
   return (
     <Navigator screenOptions={{ headerShown: false }}>
-      <Screen component={SignIn} name={auth.signin} />
+      <Screen component={Configurations} name={auth.signin} />
       <Screen component={SignUp} name={auth.signup} />
       <Screen component={SuccessSignUp} name={auth.successsignup} />
       <Screen component={SuccessAppointment} name={auth.successappointment} />
