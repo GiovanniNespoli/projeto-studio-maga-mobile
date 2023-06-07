@@ -28,6 +28,7 @@
     "@unform/core": "^2.1.6",
     "@unform/mobile": "^2.1.6",
     "expo": "~48.0.15",
+    "expo-blur": "~12.2.2",
     "expo-linear-gradient": "^12.1.2",
     "expo-status-bar": "~1.4.4",
     "moment": "^2.29.4",

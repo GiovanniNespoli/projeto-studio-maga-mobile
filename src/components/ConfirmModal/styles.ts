@@ -90,7 +90,6 @@ export const AlertText = styled.Text`
 export const AlertButtonContent = styled.View`
   width: 100%;
   height: 20%;
-  background-color: red;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
@@ -98,5 +97,14 @@ export const AlertButtonContent = styled.View`
 export const AlertButton = styled.TouchableOpacity<IAlertProps>`
   width: 30%;
   height: ${RFValue(35)}px;
-  background-color: green;
+  background-color: ${({ alertType }) => alertType ? "#7FBCAD" : "#DC6565"};
+  align-items: center;
+  justify-content: center;
+  border-radius: ${RFValue(10)}px;
+`;
+
+export const AlertLabel = styled.Text`
+  color: ${theme.colors.primary};
+  font-size: ${RFValue(14)}px;
+  font-family: ${theme.text.outfit.medium};
 `;

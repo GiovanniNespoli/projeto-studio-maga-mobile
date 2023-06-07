@@ -11,7 +11,11 @@ import {
   AlertButtonContent,
   AlertText,
   AlertTitle,
+  AlertLabel,
 } from "./styles";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { AuthParamList, auth } from "@src/routes/routesPath";
 
 interface IConfirmModal {
   value: boolean;
@@ -20,13 +24,14 @@ interface IConfirmModal {
 export default function ConfirmModal({ value, ...rest }: IConfirmModal) {
   const [modalVisible, setModalVisible] = useState(false);
 
+  const { navigate } = useNavigation<StackNavigationProp<AuthParamList, auth>>();
+
+
   useEffect(() => {
     console.log(value);
     if (value === false) {
-      console.log("é false");
       setModalVisible(false);
     } else {
-      console.log("é true");
       setModalVisible(true);
     }
   }, [value]);
@@ -56,8 +61,10 @@ export default function ConfirmModal({ value, ...rest }: IConfirmModal) {
                 Deseja cancelar hora marcada com Adriana Macedo ás 13:30?
               </AlertText>
               <AlertButtonContent>
-                <AlertButton alertType={false}></AlertButton>
-                <AlertButton alertType={true}></AlertButton>
+                <AlertButton onPress={() => {
+                  setModalVisible(false)
+                }} alertType={true}><AlertLabel>Não</AlertLabel></AlertButton>
+                <AlertButton onPress={() => { navigate("successappointment") }} alertType={false}><AlertLabel>Sim</AlertLabel></AlertButton>
               </AlertButtonContent>
             </ModalArea>
           </ModalContent>
