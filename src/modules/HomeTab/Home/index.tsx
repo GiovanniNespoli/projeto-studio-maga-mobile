@@ -23,7 +23,7 @@ export function Home() {
       contentContainerStyle={{
         justifyContent: "center",
         alignItems: "center",
-        height: Dimensions.get("screen").height + 430,
+        height: Dimensions.get("screen").height + 500,
       }}
     >
       <Banner>
