@@ -4,7 +4,7 @@ import styled from "styled-components/native"
 
 export const Container = styled.View`
     width: 100%;
-    height: 27%;
+    height: ${RFValue(150)}px;
     align-items: center;
     justify-content: space-between;
 `;

@@ -4,7 +4,7 @@ import styled from "styled-components/native";
 
 export const Container = styled.ScrollView`
   flex-direction: column;
-  padding: ${RFValue(20)}px;
+  padding: ${RFValue(10)}px;
 `;
 
 export const Title = styled.Text`
@@ -12,7 +12,7 @@ export const Title = styled.Text`
     font-family: ${theme.text.outfit.medium};
     color: ${theme.colors.text}; 
     align-self: flex-start;  
-    text-align: flex-start;
+    /* text-align: flex-start; */
 `;
 
 export const Banner = styled.View`
