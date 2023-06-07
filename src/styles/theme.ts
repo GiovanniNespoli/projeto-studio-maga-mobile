@@ -5,7 +5,9 @@ export default {
         tertiary: '#AB7C63',
         input: "#F3F3F3",
         text: "#555252",
-        button: "#DC6565"
+        button: "#DC6565",
+        textHeader: "#523200",
+        title: "#1A1A1A",
     },
     banner:{
         background: '#8A96BC'

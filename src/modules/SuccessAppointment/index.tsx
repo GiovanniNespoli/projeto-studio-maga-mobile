@@ -17,7 +17,7 @@ export function SuccessAppointment() {
         <Text1>Seu agendamento foi marcado com sucesso </Text1>
         <Text2>Você receberá uma mensagem </Text2>
 
-        <Button1 onPress={() => navigate("signin")}>
+        <Button1 onPress={() => navigate("hometab")}>
           <ButtonText>Voltar</ButtonText>
         </Button1>
       </View>
