@@ -104,7 +104,8 @@ export const BottomTab: React.FC<IBottomTabProps> = ({ tabArr, ...rest }) => {
           component={NewAppointemntScreen}
           options={() => ({
             tabBarButton: props => <Container
-              onPress={() => navigate('newappoitment')}
+              onPress={() => navigate('signin')}
+              // onPress={() => navigate('newappoitment')}
               activeOpacity={1}
             >
               <Circle>
