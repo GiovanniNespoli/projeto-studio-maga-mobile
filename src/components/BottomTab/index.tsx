@@ -1,27 +1,29 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React, { useEffect, useRef } from "react";
-import { StyleSheet, View } from "react-native";
+import { Button, StyleSheet, Touchable, View } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { AuthParamList, auth } from '@routes/routesPath';
+import { AuthParamList, auth } from "@routes/routesPath";
 import * as Animatable from "react-native-animatable";
 import { Icon } from "react-native-elements";
 import { Circle, Container, FocusContent, Content } from "./styles";
 import { useNavigation } from "@react-navigation/native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import theme from "@styles/theme";
 
 interface ITabObject {
   route: string;
-  label: string,
-  icon: string,
-  component: React.ComponentType,
+  label: string;
+  icon: string;
+  component: React.ComponentType;
 }
 
 interface IBottomTabProps {
-  tabArr: ITabObject[],
+  tabArr: ITabObject[];
 }
 
 export const BottomTab: React.FC<IBottomTabProps> = ({ tabArr, ...rest }) => {
-
-  const { navigate } = useNavigation<StackNavigationProp<AuthParamList, auth>>();
+  const { navigate } =
+    useNavigation<StackNavigationProp<AuthParamList, auth>>();
   const Tab = createBottomTabNavigator();
 
   const TabButton = (props) => {
@@ -29,16 +31,11 @@ export const BottomTab: React.FC<IBottomTabProps> = ({ tabArr, ...rest }) => {
     const focused = accessibilityState.selected;
     const viewRef = useRef(null);
 
-    useEffect(() => {
-
-    }, [focused]);
+    useEffect(() => {}, [focused]);
 
     return (
       <>
-        <Container
-          onPress={onPress}
-          activeOpacity={1}
-        >
+        <Container onPress={onPress} activeOpacity={1}>
           <Content>
             <Animatable.View
               ref={viewRef}
@@ -48,9 +45,13 @@ export const BottomTab: React.FC<IBottomTabProps> = ({ tabArr, ...rest }) => {
               ]}
             />
             <FocusContent
-              style={[{ backgroundColor: focused ? null : '#FFFFFF' },]}
+              style={[{ backgroundColor: focused ? null : "#FFFFFF" }]}
             >
-              <Icon name={item.icon} type="octicon" color={focused ? '#FFFFFF' :'#6e6e6e'} />
+              <Icon
+                name={item.icon}
+                type="octicon"
+                color={focused ? "#FFFFFF" : "#6e6e6e"}
+              />
             </FocusContent>
           </Content>
         </Container>
@@ -59,14 +60,15 @@ export const BottomTab: React.FC<IBottomTabProps> = ({ tabArr, ...rest }) => {
   };
 
   const NewAppointemntScreen = () => {
-    return null
-  }
+    return null;
+  };
 
   return (
     <>
       <Tab.Navigator
         screenOptions={{
-          headerShown: false,
+          headerShown: true,
+          headerTintColor: 'white',
           tabBarShowLabel: false,
           tabBarStyle: {
             height: 60,
@@ -82,7 +84,7 @@ export const BottomTab: React.FC<IBottomTabProps> = ({ tabArr, ...rest }) => {
             },
             shadowOpacity: 0.19,
             shadowRadius: 5.62,
-            elevation: 6
+            elevation: 6,
           },
         }}
       >
@@ -93,6 +95,19 @@ export const BottomTab: React.FC<IBottomTabProps> = ({ tabArr, ...rest }) => {
               name={item.route}
               component={item.component}
               options={{
+                headerRight: () => (
+                  <TouchableOpacity
+                  style={{marginBottom: 10, marginRight: 10}}
+                  onPress={()=> navigate('config')}
+                  >
+                    <Icon
+                      name={"gear"}
+                      type="octicon"
+                      color={theme.colors.tertiary}
+                      size={30}
+                    />
+                  </TouchableOpacity>
+                ),
                 tabBarShowLabel: false,
                 tabBarButton: (props) => <TabButton {...props} item={item} />,
               }}
@@ -103,17 +118,19 @@ export const BottomTab: React.FC<IBottomTabProps> = ({ tabArr, ...rest }) => {
           name="newAppointement"
           component={NewAppointemntScreen}
           options={() => ({
-            tabBarButton: props => <Container
-              onPress={() => navigate('newappoitment')}
-              activeOpacity={1}
-            >
-              <Circle>
-                <Icon name="plus" type="octicon" color="#FFFFFF" />
-              </Circle>
-            </Container>
-          })} />
+            tabBarButton: (props) => (
+              <Container
+                onPress={() => navigate("newappoitment")}
+                activeOpacity={1}
+              >
+                <Circle>
+                  <Icon name="plus" type="octicon" color="#FFFFFF" />
+                </Circle>
+              </Container>
+            ),
+          })}
+        />
       </Tab.Navigator>
     </>
   );
 };
-
