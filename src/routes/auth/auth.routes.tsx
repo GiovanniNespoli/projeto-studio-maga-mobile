@@ -8,6 +8,7 @@ import { SuccessAppointment } from "@modules/SuccessAppointment";
 import { SuccessSignUp } from "@modules/SuccessSignUp";
 import { NewAppointment } from "@modules/HomeTab/Appointments/NewAppointment";
 import { Appointments } from "@modules/HomeTab/Appointments";
+import Adm from "@modules/Adm";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -21,6 +22,7 @@ export default function AuthRoutes() {
       <Screen component={SignUp} name={auth.signup} />
       <Screen component={SuccessSignUp} name={auth.successsignup} />
       <Screen component={SuccessAppointment} name={auth.successappointment} />
+      <Screen component={Adm} name={auth.adm} />
     </Navigator>
   );
 }

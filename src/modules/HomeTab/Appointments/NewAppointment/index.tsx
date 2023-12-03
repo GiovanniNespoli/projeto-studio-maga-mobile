@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Icon } from "react-native-elements";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { AuthParamList, auth } from "@routes/routesPath";
@@ -23,6 +23,8 @@ import "moment/locale/pt-br";
 import { Dimensions, StyleSheet } from "react-native";
 import theme from "@styles/theme";
 import { Button } from "@components/Button";
+import { useAppointment } from "../../../../hooks/appointments";
+import { useUser } from "../../../../hooks/user";
 
 const DATA = [
   {
@@ -41,35 +43,78 @@ const DATA = [
     id: "4",
     label: "Unha Fibra",
   },
-  {
-    id: "5",
-    label: "Unha Fibra",
-  },
-  {
-    id: "6",
-    label: "Unha Fibra",
-  },
 ];
 
 export function NewAppointment() {
+  const { CreateAppointment } = useAppointment();
+  const { userLogged } = useUser();
+
   const { navigate, goBack } =
     useNavigation<StackNavigationProp<AuthParamList, auth>>();
+  const [service, setService] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+
+  const createAppointmentHandle = useCallback(async () => {
+    const create = await CreateAppointment({
+      date: `${date} ${converterHora12Para24(time)}`,
+      service,
+      value: "50",
+      userId: userLogged.id,
+    });
+
+    if (create) {
+      navigate("successappointment");
+    }
+
+    return;
+  }, [service, date, time]);
 
   const onDateSelected = (date) => {
-    console.log("Selected Date:==>", date);
-    // console.log('Selected Date:==>', moment(date).format('MMMM Do YYYY, h:mm:ss a'));
+    setDate(date);
   };
 
   const onTimeSelected = (time) => {
-    console.log("Selected time:==>", time);
+    setTime(time);
   };
+
+  function converterHora12Para24(hora12: string): string {
+    // Use a expressão regular para extrair a hora, os minutos e o indicador AM/PM
+    const match = hora12.match(/(\d+):(\d+)\s?([APMapm]{2})/);
+
+    if (!match) {
+      // Retorne a string original se não for possível extrair os componentes
+      return hora12;
+    }
+
+    let horas = parseInt(match[1], 10);
+    const minutos = match[2];
+    const periodo = match[3].toUpperCase();
+
+    // Converta para o formato de 24 horas
+    if (periodo === "PM" && horas !== 12) {
+      horas += 12;
+    } else if (periodo === "AM" && horas === 12) {
+      horas = 0;
+    }
+
+    // Formate as horas e os minutos para garantir dois dígitos
+    const horasFormatadas = horas.toString().padStart(2, "0");
+
+    // Retorne a hora no formato de 24 horas
+    return `${horasFormatadas}:${minutos}`;
+  }
 
   return (
     <Container>
       <Content marginTopNumber={0}>
         <Grid>
           <Header>
-            <IconButton onPress={() => {}}>
+            <IconButton
+              onPress={() => {
+                navigate("hometab");
+              }}
+            >
               <Icon
                 name={"arrow-left"}
                 type="octicon"
@@ -83,7 +128,12 @@ export function NewAppointment() {
 
           <SelectContent>
             <Title>Serviço Selecionado :</Title>
-            <SelectServiceModal data={DATA} />
+            <SelectServiceModal
+              selectedValue={(value) => {
+                setService(value);
+              }}
+              data={DATA}
+            />
           </SelectContent>
           <SelectContent style={{ marginTop: RFValue(30) }}>
             <Title>Selecione o Dia</Title>
@@ -111,9 +161,15 @@ export function NewAppointment() {
 
           <TotalValueContent>
             <Title style={{ marginRight: RFValue(10) }}>Valor Total: </Title>
-            <TotalValue>110,90</TotalValue>
+            <TotalValue>50,00</TotalValue>
           </TotalValueContent>
-          <Button onPress={() => {navigate("successappointment")}} fontSize={18} label="Agendar horário" />
+          <Button
+            onPress={() => {
+              createAppointmentHandle();
+            }}
+            fontSize={18}
+            label="Agendar horário"
+          />
         </Grid>
       </Content>
     </Container>

@@ -15,20 +15,20 @@ import {
 } from "./styles";
 import { Feather } from "@expo/vector-icons";
 import "moment/locale/pt-br";
-import { useAppointment } from "../../../hooks/appointments";
-import { useUser } from "../../../hooks/user";
+import { useAppointment } from "../../hooks/appointments";
+import { useUser } from "../../hooks/user";
 import IAppointment from "@src/interfaces/IAppointment";
 
-export function Appointments() {
+export default function Adm() {
   const { navigate } =
     useNavigation<StackNavigationProp<AuthParamList, auth>>();
 
-  const { GetAppointmentPerUser, DeleteAppointment } = useAppointment();
+  const { GetAppointment, DeleteAppointment } = useAppointment();
   const { userLogged } = useUser();
 
   const [items, setItems] = useState<IAppointment[]>({} as IAppointment[]);
 
-  GetAppointmentPerUser(userLogged.id).then((promise) => {
+  GetAppointment().then((promise) => {
     setItems(promise);
   });
 
@@ -40,7 +40,7 @@ export function Appointments() {
           alignItems: "center",
         }}
       >
-        <Titulo style={{ paddingTop: 30 }}>Seus Horários</Titulo>
+        <Titulo style={{ paddingTop: 30 }}>Todos os horários marcados</Titulo>
 
         <View style={{ flexDirection: "column" }}>
           {items.length ? (

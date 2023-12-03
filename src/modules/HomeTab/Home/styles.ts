@@ -68,8 +68,8 @@ export const BannerTitle = styled.Text`
 `;
 
 export const BannerText = styled.View`
-  left: ${RFValue(200)};
-  top: ${RFValue(90)};
+  left: ${RFValue(200)}px;
+  top: ${RFValue(90)}px;
   width: ${RFValue(112)}px;
   height: ${RFValue(278)}px;
   justify-content: center;

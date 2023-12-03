@@ -28,7 +28,6 @@ export default function ConfirmModal({ value, ...rest }: IConfirmModal) {
 
 
   useEffect(() => {
-    console.log(value);
     if (value === false) {
       setModalVisible(false);
     } else {

@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Dimensions, Text } from "react-native";
 import {
   Container,
@@ -22,15 +22,22 @@ import {
 import { PriceList } from "@components/PriceList";
 import { Image } from "react-native";
 import { useImage } from "../../../hooks/image";
+import { Video, ResizeMode } from "expo-av";
+import { useUser } from "../../../hooks/user";
 
 export function Home() {
   const { image } = useImage();
+
+  const { userLogged } = useUser();
+
+  const video = useRef(null);
+  const [status, setStatus] = useState({});
 
   return (
     <Container>
       <Grid>
         <Header>
-          <HeaderTitle>Bem vindo Giovanni</HeaderTitle>
+          <HeaderTitle>Bem vindo {userLogged.name}</HeaderTitle>
 
           <UserPhoto>
             {image && (
@@ -41,6 +48,17 @@ export function Home() {
             )}
           </UserPhoto>
         </Header>
+        <Video
+          ref={video}
+          style={{ width: "100%", height: 190, marginBottom: 30 }}
+          source={{
+            uri: "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+          }}
+          useNativeControls
+          resizeMode={ResizeMode.CONTAIN}
+          isLooping
+          onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+        />
         <Banner>
           <BannerImage source={require("@assets/banner.png")} />
           <BannerText>

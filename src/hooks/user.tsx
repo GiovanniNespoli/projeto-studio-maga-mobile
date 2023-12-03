@@ -19,13 +19,15 @@ interface ICreateUser {
 
 interface IUserContext {
   CreateUser(newUser: ICreateUser): void;
-  Login(email: string, password: string): void;
+  Login(email: string, password: string): Promise<boolean>;
+  userLogged: IUser;
 }
 
 const UserContext = createContext<IUserContext>({} as IUserContext);
 
 const UserProvider: React.FC = ({ children }) => {
   const [sound, setSound] = useState<Audio.Sound>();
+  const [userLogged, setUserLogged] = useState<IUser>({} as IUser);
 
   async function playSound() {
     const { sound } = await Audio.Sound.createAsync(
@@ -44,27 +46,39 @@ const UserProvider: React.FC = ({ children }) => {
       : undefined;
   }, [sound]);
 
-  const Login = useCallback(async (email: string, password: string) => {
-    await api
-      .post("/users/auth", { email, password })
-      .then(async (promise) => {
-        Toast.show({
-          type: "success",
-          text1: "Sucesso",
-          text2: "Login realizado com sucesso ✅",
+  const Login = useCallback(
+    async (email: string, password: string): Promise<boolean> => {
+      const loginIntegration = await api
+        .post("/users/auth", { email, password })
+        .then(async (promise) => {
+          Toast.show({
+            type: "success",
+            text1: "Sucesso",
+            text2: "Login realizado com sucesso ✅",
+            visibilityTime: 5000,
+          });
+          await playSound();
+          setUserLogged(promise.data);
+          return true;
+        })
+        .catch((err) => {
+          console.log(err);
+          Toast.show({
+            type: "error",
+            text1: "Erro",
+            text2: "Email ou senha incorretos ❌",
+            visibilityTime: 5000,
+          });
+          return false;
         });
-        await playSound();
-        return promise;
-      })
-      .catch((err) => {
-        return err;
-      });
-  }, []);
+
+      return loginIntegration;
+    },
+    []
+  );
 
   const CreateUser = useCallback(
     async ({ email, name, password, phone }: ICreateUser) => {
-      console.log(email, name, password, phone);
-
       await api
         .post<IUser>("/users", {
           email,
@@ -89,7 +103,7 @@ const UserProvider: React.FC = ({ children }) => {
   );
 
   return (
-    <UserContext.Provider value={{ CreateUser, Login }}>
+    <UserContext.Provider value={{ CreateUser, Login, userLogged }}>
       {children}
     </UserContext.Provider>
   );

@@ -11,7 +11,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { AuthParamList, auth } from "@src/routes/routesPath";
 import * as ImagePicker from "expo-image-picker";
 import { useImage } from "../../hooks/image";
-import { useUser } from "@src/hooks/user";
+import { useUser } from "../../hooks/user";
 
 export function SignIn() {
   const { Login } = useUser();
@@ -22,6 +22,7 @@ export function SignIn() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -37,7 +38,18 @@ export function SignIn() {
   };
 
   const loginHandle = useCallback(async () => {
-    Login(email, password);
+
+    if (email === "adm@gmail.com" && password === "adm123") {
+      return navigate("adm");
+    }
+    
+    const verify = await Login(email, password);
+
+    if (verify) {
+      return navigate("hometab");
+    }
+
+    return;
   }, [email, password]);
 
   return (
@@ -75,7 +87,6 @@ export function SignIn() {
                 fontSize={22}
                 onPress={() => {
                   loginHandle();
-                  navigate("hometab");
                 }}
               />
             </SignInForm>

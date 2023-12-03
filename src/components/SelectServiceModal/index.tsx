@@ -23,16 +23,20 @@ interface items {
 
 interface IPickerProps {
   data: items[];
+  selectedValue(value: string): void;
 }
 
-
-export default function SelectServiceModal({ data, ...rest }: IPickerProps) {
+export default function SelectServiceModal({
+  data,
+  selectedValue,
+  ...rest
+}: IPickerProps) {
   const [modalVisible, setModalVisible] = useState(false);
   const [label, setLabel] = useState("");
 
   useEffect(() => {
-    setLabel("Limpeza de pele");
-  }, []);
+    selectedValue(label);
+  }, [label]);
 
   const Item = ({ label, id }) => {
     return (
