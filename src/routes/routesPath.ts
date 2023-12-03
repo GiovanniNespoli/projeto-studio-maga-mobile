@@ -6,7 +6,6 @@ export enum auth {
     hometab = 'hometab',
     home = 'home',
     appointemnts = 'appointemnts',
-    codevalidation = 'codevalidation',
     newappoitment = 'newappoitment',
     tab = 'tab',
     successappointment = 'successappointment',

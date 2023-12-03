@@ -4,9 +4,14 @@ import { Container } from "./styles";
 
 interface IInputsProps extends TextInputProps {
   name: string;
+  inputValue(data: string);
 }
 
-export const MaskedInput: React.FC<IInputsProps> = ({ name, ...rest }) => {
+export const MaskedInput: React.FC<IInputsProps> = ({
+  name,
+  inputValue,
+  ...rest
+}) => {
   const inputElementRef = useRef<any>(null);
 
   return (
@@ -14,7 +19,9 @@ export const MaskedInput: React.FC<IInputsProps> = ({ name, ...rest }) => {
       ref={inputElementRef}
       {...rest}
       mask="(99) 99999-9999"
-      onChangeText={() => {}}
+      onChangeText={(value) => {
+        inputValue(value);
+      }}
     ></Container>
   );
 };

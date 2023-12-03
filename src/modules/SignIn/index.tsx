@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { Container, SignInContainer, SignInForm } from "./styles";
 import { Content } from "@components/Content";
 import { Header } from "@components/Header";
@@ -9,11 +9,36 @@ import { AccontNavigation } from "@components/AccontNavigation";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { AuthParamList, auth } from "@src/routes/routesPath";
+import * as ImagePicker from "expo-image-picker";
+import { useImage } from "../../hooks/image";
+import { useUser } from "@src/hooks/user";
 
 export function SignIn() {
-  const formRef = useRef(null);
+  const { Login } = useUser();
+
   const { navigate } =
     useNavigation<StackNavigationProp<AuthParamList, auth>>();
+  const { saveImage } = useImage();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      saveImage(result.assets[0].uri);
+    }
+  };
+
+  const loginHandle = useCallback(async () => {
+    Login(email, password);
+  }, [email, password]);
 
   return (
     <Container>
@@ -24,17 +49,32 @@ export function SignIn() {
               subTitle="Preencha os campos para entrar"
               title="Seja Bem-vindo(a)"
             />
-            <SignInForm ref={formRef} onSubmit={() => {}}>
-              <Input name="email" placeholder="Email" />
+            <SignInForm onSubmit={() => {}}>
+              <Input
+                name="email"
+                placeholder="Email"
+                onChangeText={(value) => {
+                  setEmail(value);
+                }}
+              />
               <Input
                 name="password"
                 placeholder="Senha"
                 secureTextEntry={true}
+                onChangeText={(value) => {
+                  setPassword(value);
+                }}
+              />
+              <Button
+                label={"Selecionar foto de perfil"}
+                fontSize={20}
+                onPress={pickImage}
               />
               <Button
                 label="Login"
                 fontSize={22}
                 onPress={() => {
+                  loginHandle();
                   navigate("hometab");
                 }}
               />
